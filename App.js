@@ -10,6 +10,7 @@ import {
 import Header from './components/Header';
 import uuid from 'uuid-random';
 import TaskListItem from './components/TaskListItem';
+import AddTask from './components/AddTask';
 
 class App extends Component {
   constructor(props) {
@@ -38,6 +39,7 @@ class App extends Component {
       <SafeAreaView style={styles.container}>
         <View>
           <Header />
+          <AddTask />
           <FlatList
             data={tasks}
             renderItem={({item}) => (

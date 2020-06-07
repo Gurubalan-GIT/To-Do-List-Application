@@ -6,6 +6,7 @@ import {
   SafeAreaView,
   FlatList,
   Text,
+  Alert,
 } from 'react-native';
 import Header from './components/Header';
 import uuid from 'uuid-random';
@@ -16,12 +17,7 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      tasks: [
-        {id: uuid(), content: 'Finish up projects!'},
-        {id: uuid(), content: 'Attend reviews'},
-        {id: uuid(), content: 'Finish house chores'},
-        {id: uuid(), content: 'Feed the cat!'},
-      ],
+      tasks: [{id: uuid(), content: 'Sample task'}],
     };
   }
 
@@ -34,9 +30,18 @@ class App extends Component {
   };
 
   addTask = (task) => {
-    this.setState((prevState) => ({
-      tasks: [{id: uuid(), content: task}, ...prevState.tasks],
-    }));
+    if (!task) {
+      Alert.alert(
+        'Error',
+        'Please enter some valid task',
+        [{text: 'OK', onPress: () => console.log('OK Pressed')}],
+        {cancelable: true},
+      );
+    } else {
+      this.setState((prevState) => ({
+        tasks: [{id: uuid(), content: task}, ...prevState.tasks],
+      }));
+    }
   };
 
   render() {
@@ -45,7 +50,7 @@ class App extends Component {
       <SafeAreaView style={styles.container}>
         <View>
           <Header />
-          <AddTask addTask={this.addTask}/>
+          <AddTask addTask={this.addTask} />
           <FlatList
             data={tasks}
             renderItem={({item}) => (

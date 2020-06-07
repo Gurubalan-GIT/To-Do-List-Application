@@ -59,12 +59,18 @@ class App extends Component {
           <View>
             <Header deleteAllTasks={this.deleteAllTasks} />
             <AddTask addTask={this.addTask} />
-            <FlatList
-              data={tasks}
-              renderItem={({item}) => (
-                <TaskListItem task={item} deleteTask={this.deleteTask} />
-              )}
-            />
+            {tasks.length ? (
+              <FlatList
+                data={tasks}
+                renderItem={({item}) => (
+                  <TaskListItem task={item} deleteTask={this.deleteTask} />
+                )}
+              />
+            ) : (
+              <Text style={styles.noTasksText}>
+                Add a task and get started!
+              </Text>
+            )}
           </View>
         </SafeAreaView>
       </ScrollView>
@@ -75,6 +81,13 @@ class App extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+  },
+  noTasksText: {
+    display: 'flex',
+    marginTop: 50,
+    fontSize: 18,
+    textAlign: 'center',
+    color: '#e91e63',
   },
 });
 

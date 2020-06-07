@@ -33,13 +33,19 @@ class App extends Component {
     });
   };
 
+  addTask = (task) => {
+    this.setState((prevState) => ({
+      tasks: [{id: uuid(), content: task}, ...prevState.tasks],
+    }));
+  };
+
   render() {
     const {tasks} = this.state;
     return (
       <SafeAreaView style={styles.container}>
         <View>
           <Header />
-          <AddTask />
+          <AddTask addTask={this.addTask}/>
           <FlatList
             data={tasks}
             renderItem={({item}) => (

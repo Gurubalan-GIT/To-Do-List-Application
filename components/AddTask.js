@@ -26,6 +26,8 @@ class AddTask extends Component {
     this.setState({taskInput: input});
   };
   render() {
+    const {addTask} = this.props;
+    const {taskInput} = this.state;
     return (
       <View>
         <TextInput
@@ -33,7 +35,9 @@ class AddTask extends Component {
           style={styles.taskInput}
           onChangeText={this.onChange}
         />
-        <TouchableOpacity style={styles.addTaskBtn}>
+        <TouchableOpacity
+          style={styles.addTaskBtn}
+          onPress={() => addTask(taskInput)}>
           <FontAwesomeIcon icon={faPlusCircle} size={20} />
           <Text style={styles.addTaskBtnText}>Add Task</Text>
         </TouchableOpacity>

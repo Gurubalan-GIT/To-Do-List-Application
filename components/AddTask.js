@@ -16,10 +16,23 @@ import {
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
 import {faPlusCircle} from '@fortawesome/free-solid-svg-icons';
 class AddTask extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      taskInput: '',
+    };
+  }
+  onChange = (input) => {
+    this.setState({taskInput: input});
+  };
   render() {
     return (
       <View>
-        <TextInput placeholder="Add a new task!" style={styles.taskInput} />
+        <TextInput
+          placeholder="Add a new task!"
+          style={styles.taskInput}
+          onChangeText={this.onChange}
+        />
         <TouchableOpacity style={styles.addTaskBtn}>
           <FontAwesomeIcon icon={faPlusCircle} size={20} />
           <Text style={styles.addTaskBtnText}>Add Task</Text>

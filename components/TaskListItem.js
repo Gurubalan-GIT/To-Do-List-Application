@@ -19,7 +19,7 @@ class TaskListItem extends Component {
           <Text style={styles.taskItemText}>{task.content}</Text>
           <FontAwesomeIcon
             icon={faTimesCircle}
-            size={24}
+            size={26}
             color="#ef5350"
             onPress={() => deleteTask(task.id)}
           />

@@ -38,7 +38,7 @@ class AddTask extends Component {
         <TouchableOpacity
           style={styles.addTaskBtn}
           onPress={() => addTask(taskInput)}>
-          <FontAwesomeIcon icon={faPlusCircle} size={20} />
+          <FontAwesomeIcon icon={faPlusCircle} size={20} color="#303f9f" />
           <Text style={styles.addTaskBtnText}>Add Task</Text>
         </TouchableOpacity>
       </View>
@@ -53,7 +53,7 @@ const styles = StyleSheet.create({
     fontSize: 17,
   },
   addTaskBtn: {
-    backgroundColor: '#c2bad8',
+    backgroundColor: '#c5cae9',
     padding: 10,
     display: 'flex',
     flexDirection: 'row',
@@ -63,7 +63,7 @@ const styles = StyleSheet.create({
     margin: 3,
   },
   addTaskBtnText: {
-    color: 'black',
+    color: '#1a237e',
     fontSize: 20,
     paddingLeft: 10,
   },

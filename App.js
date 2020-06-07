@@ -7,6 +7,7 @@ import {
   FlatList,
   Text,
   Alert,
+  ScrollView,
 } from 'react-native';
 import Header from './components/Header';
 import uuid from 'uuid-random';
@@ -29,6 +30,12 @@ class App extends Component {
     });
   };
 
+  deleteAllTasks = () => {
+    this.setState({
+      tasks: [],
+    });
+  };
+
   addTask = (task) => {
     if (!task) {
       Alert.alert(
@@ -47,18 +54,20 @@ class App extends Component {
   render() {
     const {tasks} = this.state;
     return (
-      <SafeAreaView style={styles.container}>
-        <View>
-          <Header />
-          <AddTask addTask={this.addTask} />
-          <FlatList
-            data={tasks}
-            renderItem={({item}) => (
-              <TaskListItem task={item} deleteTask={this.deleteTask} />
-            )}
-          />
-        </View>
-      </SafeAreaView>
+      <ScrollView>
+        <SafeAreaView style={styles.container}>
+          <View>
+            <Header deleteAllTasks={this.deleteAllTasks} />
+            <AddTask addTask={this.addTask} />
+            <FlatList
+              data={tasks}
+              renderItem={({item}) => (
+                <TaskListItem task={item} deleteTask={this.deleteTask} />
+              )}
+            />
+          </View>
+        </SafeAreaView>
+      </ScrollView>
     );
   }
 }
